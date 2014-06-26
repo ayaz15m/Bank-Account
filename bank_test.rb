@@ -25,7 +25,9 @@ class BankTest < Minitest::Test
 
   def test_calculate_balance_in_account_after_withdrawal_and_deposit
     @bank.account(100)
-    withrawal_amount = @bank.withdraw(50)    
+    withrawal_amount = @bank.withdraw(50)
+    @bank.calculate_balance(withrawal_amount)
+        
     deposit_amount = @bank.deposit(75)
     assert_equal 125, @bank.calculate_balance(deposit_amount)
   end
