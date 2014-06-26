@@ -13,8 +13,7 @@ class BankTest < Minitest::Test
 
   def test_balance_in_account_after_deposit
     @bank.account(100)
-    amount = @bank.deposit(50)
-    assert_equal 150, @bank.calculate_balance(amount)
+    assert_equal 150, @bank.calculate_balance(@bank.deposit(50))
   end
 
 end
