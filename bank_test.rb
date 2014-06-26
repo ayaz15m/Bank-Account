@@ -17,7 +17,7 @@ class BankTest < Minitest::Test
   end
 
   def test_amount_withdrawn_received_in_method
-    
+    assert_equal 100, @bank.withdraw(100)
   end
 
 end
