@@ -8,10 +8,7 @@ class BankTest < Minitest::Test
   end
 
   def test_balance_in_account
-    balance = @bank.account(100)
-
-    assert_equal 100, balance
-
+    assert_equal 100, @bank.account(100)
   end
 
 
