@@ -12,7 +12,7 @@ class Bank
   end
 
   def withdraw(withdrawal_amount)
-    withdrawal_amount
+    amount = -withdrawal_amount
   end
 
   def calculate_balance(amount)

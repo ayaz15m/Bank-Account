@@ -17,12 +17,12 @@ class BankTest < Minitest::Test
   end
 
   def test_amount_withdrawn_received_in_method
-    assert_equal 100, @bank.withdraw(100)
+    assert_equal -100, @bank.withdraw(100)
   end
 
   def test_calculate_balance_in_account_after_withdrawal
     @bank.account(100)
-    amount = @bank.deposit(50)
+    amount = @bank.withdraw(50)
     assert_equal 50, @bank.calculate_balance(amount)
   end
 
