@@ -4,32 +4,30 @@ require './bank'
 
 class BankTest < Minitest::Test
   def setup
-    @bank = Bank.new
+    @bank = Transactions.new
+    @balance = 1000
   end
 
   def test_balance_in_account
-    assert_equal 100, @bank.account(100)
+    assert_equal @balance, @bank.account(@balance, 0)
   end
 
   def test_calculate_balance_in_account_after_deposit
-    @bank.account(100)
     deposit_amount = @bank.deposit(50)
-    assert_equal 150, @bank.calculate_balance(deposit_amount)
+    assert_equal 1050, @bank.account(@balance, deposit_amount)
   end
 
   def test_calculate_balance_in_account_after_withdrawal
-    @bank.account(100)
     withrawal_amount = @bank.withdraw(50)
-    assert_equal 50, @bank.calculate_balance(withrawal_amount)
+    assert_equal 950, @bank.account(@balance, withrawal_amount)
   end
 
   def test_calculate_balance_in_account_after_withdrawal_and_deposit
-    @bank.account(100)
     withrawal_amount = @bank.withdraw(50)
-    @bank.calculate_balance(withrawal_amount)
-        
+    new_balance = @bank.account(@balance, withrawal_amount)
+
     deposit_amount = @bank.deposit(75)
-    assert_equal 125, @bank.calculate_balance(deposit_amount)
+    assert_equal 1025, @bank.account(new_balance, deposit_amount)
   end
 
 end
